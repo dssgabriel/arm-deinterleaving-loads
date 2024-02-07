@@ -3,7 +3,7 @@
 ## About
 
 This repository implements minimal code examples that measure the performance Arm SIMD (NEON and SVE) de-interleaving load instructions with 64-bit floating-point data: `ld2X`, `ld3X` and `ld4X`.
-The assembly code is instrumented to measure the elapsed cycles of each routine implementation. Moreover, we also use the [`nanobench`]() library to assert the stability of the benchmarks and retrieve additional performance counters.
+The assembly code is instrumented to measure the elapsed cycles of each routine implementation. Moreover, we also use the [`nanobench`](https://github.com/martinus/nanobench) library to assert the stability of the benchmarks and retrieve additional performance counters.
 
 
 ## Usage
@@ -40,3 +40,6 @@ benchmark                |               ns/op |                op/s |    err% |
  `Arm64 de-interleave 4D`|          267,079.80 |            3,744.20 |    0.3% |    1,441,807.13 |      685,236.43 |            687,992 |  2.104 | 0.91 
  `NEON de-interleave 4D` |        2,100,981.67 |              475.97 |    1.3% |    4,194,326.13 |    5,407,170.85 |          5,731,691 |  0.776 | 7.20 
  `SVE de-interleave 4D`  |        2,086,051.44 |              479.37 |    1.6% |    4,194,326.13 |    5,372,054.24 |          5,181,326 |  0.781 | 7.14 
+
+ It appears that scalar implementations remain faster than SIMD approach in all tested cases.   
+ Different buffer sizes may impact performance differently, so test as you wish. :)
